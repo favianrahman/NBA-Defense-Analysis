@@ -128,6 +128,7 @@ player_dist_matrix <- function(eventID) {
   bigdistancedf <- as.data.frame(bigdistancedf)
   clockinfo <- get_game_clock("ball",eventID)
   bigdistancedf$game_clock <- clockinfo$game_clock
+  #bigdistancedf$event.id <- seq(1, length.out=nrow(bigdistancedf), by=1)
   return (bigdistancedf)
 }
 

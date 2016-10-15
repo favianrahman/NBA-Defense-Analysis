@@ -33,5 +33,20 @@ all.movements <- all.movements[order(all.movements$counter),]
 pickeventID <- 1
 dists_event1 <- player_dist_matrix(pickeventID)
 
+makes <- data.frame()
+misses <- data.frame()
+
+for (i in unique(all.movements$event.id)) {
+  pickeventID <- i
+  if (subset(all.movements, all.movements$event.id==i)$EVENTMSGTYPE == 1) {
+    dists_event <- player_dist_matrix(pickeventID)
+    makes <- rbind(makes, dists_event)
+  } else if (subset(all.movements, all.movements$event.id==i)$EVENTMSGTYPE == 2) {
+    dists_event <- player_dist_matrix(pickeventID)
+    misses <- rbind(misses, dists_event)
+  }
+}
+
+
 
 
